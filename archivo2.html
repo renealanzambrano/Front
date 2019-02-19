@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practica</title>
+    <style>
+   body{
+       margin: 0;
+   }
+   
+   .dd{
+       text-decoration: none;
+       background-color: grey;
+       width: 100%;
+   }
+   .aparecer{
+       visibility: visible;
+   }
+   .imagen{
+    width: 100%; 
+    height: 100%;
+   }
+   .oculto{
+       display: none;
+   }
+   ul.sidenav{
+       list-style-type:none;
+       margin: 0;
+       padding: 0;
+       width: 25%;
+       background-color: grey;
+       position: fixed;
+       height: 100%;
+       overflow: auto;
+   }
+   ul.sidenav li a{
+       display: block;
+       color: black;
+       padding: 8px 16px;
+   }
+   ul.sidenav li a.active{
+       background-color: rebeccapurple;
+       color: white;
+   }
+   ul.sidenav li a.notactive{
+       display: block;
+    color: black;
+    padding: 8px 16px;
+   }
+   ul.sidenav li a:hover:not(.active){
+       background-color:green;
+       color:white;
+   }
+   div.content{
+       margin-left: 25%;
+       padding: 1px 16px;
+       height: 1000px;
+   }
+   .desactivo{
+       display: none;
+   }
+   
+   @media screen and (max-width:2500px){
+       ul.sidenav{
+            width:100%;
+            height: auto;
+            position: relative;
+       }
+       ul.sidenav li a{
+           float: left;
+           padding: 15px;
+       }
+       div.content{
+           margin-left: 0;
+       }
+       .buton{
+       visibility: hidden;
+        }
+   }
+   @media screen and (max-width:415px){
+       ul.sidenav li a{
+           text-align: center;
+           float: none;
+       }
+       .buton{
+           text-decoration: none;
+           background-color: green;
+           color: black;
+           font-size: 20px;
+           padding: 3px;
+           margin: 3px;
+           visibility: visible;
+       }
+       .visible{
+            visibility: hidden;
+       }
+   }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="div" class="buton">
+        <li id="main" class="sidenav"><a id="main2" href="javascript:;" click="all()" >Opciones</a></li>
+    </div>
+    
+    <ul id="sidenav" class="sidenav">
+        
+        <li><a id="menu1" href="javascript:;"  click="menu1()" class="visible">Menu1 </a> </li>
+        <li><a id="menu2" href="javascript:;"click="menu2()" class="visible"> Menu2 </a></li>
+        <li><a id="menu3" href="javascript:;"click="menu3()" class="visible"> Menu3 </a></li>
+        
+    </ul>
+    <div id="contenido1" class="content oculto">
+        <p> Hola Mundo </p>
+        <img class="imagen" src="https://upload.wikimedia.org/wikipedia/commons/d/da/Internet2.jpg" style="" alt="">
+    </div>
+    <div id="contenido2" class="content oculto">
+            <p> Hola Mundo 2 </p>
+            <img class="imagen" src="https://upload.wikimedia.org/wikipedia/commons/d/da/Internet2.jpg" style="" alt="">   
+        </div>
+     <div id="contenido3" class="content oculto">
+            <p> Hola Mundo 3 </p>
+            <img class="imagen" src="https://upload.wikimedia.org/wikipedia/commons/d/da/Internet2.jpg" style="" alt="">
+    </div>
+</body>
+<script type="">
+    $(document).ready(function(){ 
+  $("#menu1").click(function(){
+    $("#menu1").addClass("active");
+    $("#menu2").removeClass("active")
+    $("#menu3").removeClass("active")
+    $("#contenido1").removeClass("oculto")
+    $("#contenido2").addClass("oculto")
+    $("#contenido3").addClass("oculto")
+  });
+  $("#menu2").click(function(){
+    $("#menu1").removeClass("active")
+    $("#menu2").addClass("active");
+    $("#menu3").removeClass("active");
+    $("#contenido2").removeClass("oculto")
+    $("#contenido1").addClass("oculto")
+    $("#contenido3").addClass("oculto")
+  });
+  $("#menu3").click(function(){
+    $("#menu1").removeClass("active")
+    $("#menu2").removeClass("active");
+    $("#menu3").addClass("active");
+    $("#contenido3").removeClass("oculto")
+    $("#contenido1").addClass("oculto")
+    $("#contenido2").addClass("oculto")
+  });
+});
+$(document).ready(function(){
+    var contador=1;
+    if(contador==1){
+        $("#main").click(function(){
+         $("#menu1").removeClass("visible")
+         $("#menu2").removeClass("visible");
+         $("#menu3").removeClass("visible")
+         $("#main").addClass("visible")
+        
+   });  
+   contador=0;
+    }
+    else{
+        $("#main").click(function(){
+         $("#menu1").addClass("visible")
+         $("#menu2").addClass("visible");
+         $("#menu3").addClass("visible")
+   }); 
+   contador=0;
+    }
+   
+});
+</script>
+</html>
